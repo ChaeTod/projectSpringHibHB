@@ -7,7 +7,7 @@ import sk.it.Artem.entities.InstructorDetailEntity;
 import sk.it.Artem.entities.InstructorEntity;
 
 
-public class DeleteDemo {
+public class GetConstructorDetail {
     public static void main(String[] args) {
         // create session factory
         SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(InstructorEntity.class).addAnnotatedClass(InstructorDetailEntity.class).buildSessionFactory();
@@ -19,25 +19,26 @@ public class DeleteDemo {
             // start a transaction
             session.beginTransaction();
 
-            // get instructor by the primary key / id
-            int field = 1;
-            InstructorEntity instructor = session.get(InstructorEntity.class, field);
+            // get the instructor detail object
+            int fieldId = 2;
+            InstructorDetailEntity instructorDetailEntity = session.get(InstructorDetailEntity.class, fieldId);
 
-            System.out.println("Found the instructor: " + instructor);
+            // print the instructor detail
+            System.out.println("Instructor Detail: " + instructorDetailEntity);
 
-            // delete the instructions
-            if (instructor != null){
-                System.out.println("Deleting: " + instructor);
-
-                // this will ALSO delete associated "details" object
-                session.delete(instructor);
-            }
+            // print the associated instructor
+            System.out.println("The associated instructor: " + instructorDetailEntity.getInstructorEntity());
 
             // commit transaction
             session.getTransaction().commit();
             System.out.println("Done!");
 
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
+            // handle connection leak issue
+            session.close();
+
             factory.close();
         }
     }
