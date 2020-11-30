@@ -1,9 +1,9 @@
-package sk.it.Artem.entities;
+package sk.it.Artem.course.enteties;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "instructor", schema = "hb-01-one-to-one-uni")
+@Table(name = "instructor", schema = "hb-03-one-to-many")
 public class InstructorEntity {
 
     @Id
@@ -23,7 +23,7 @@ public class InstructorEntity {
     @Column(name = "email", nullable = true, length = 45)
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL) // it will apply for any operation like UPDATE/DELETE and etc. and update the associated subject accordingly
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH}) // it will apply for any operation like UPDATE/DELETE and etc. and update the associated subject accordingly
     @JoinColumn(name = "instructor_detail_id", referencedColumnName = "id")
     private InstructorDetailEntity instructorDetailByInstructorDetailId;
 
@@ -37,7 +37,6 @@ public class InstructorEntity {
 
     }
 
-
     public Integer getId() {
         return id;
     }
@@ -45,7 +44,6 @@ public class InstructorEntity {
     public void setId(Integer id) {
         this.id = id;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -55,7 +53,6 @@ public class InstructorEntity {
         this.firstName = firstName;
     }
 
-
     public String getLastName() {
         return lastName;
     }
@@ -64,7 +61,6 @@ public class InstructorEntity {
         this.lastName = lastName;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -72,7 +68,6 @@ public class InstructorEntity {
     public void setEmail(String email) {
         this.email = email;
     }
-
     public InstructorDetailEntity getInstructorDetailByInstructorDetailId() {
         return instructorDetailByInstructorDetailId;
     }
@@ -91,3 +86,4 @@ public class InstructorEntity {
                 '}';
     }
 }
+

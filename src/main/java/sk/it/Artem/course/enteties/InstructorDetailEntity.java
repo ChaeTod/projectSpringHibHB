@@ -1,4 +1,6 @@
-package sk.it.Artem.entities;
+/*
+package sk.it.Artem.course;*/
+package sk.it.Artem.course.enteties;
 
 import javax.persistence.*;
 
@@ -15,8 +17,8 @@ import javax.persistence.*;
 // generate toString()
 
 @Entity
-@Table(name = "instructor_detail", schema = "hb-01-one-to-one-uni")
-public class InstructorDetailEntity {
+@Table(name = "instructor_detail", schema = "hb-03-one-to-many")
+public class InstructorDetailEntity<InstructorEntity> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +32,17 @@ public class InstructorDetailEntity {
     @Basic
     @Column(name = "hobby", nullable = true, length = 45)
     private String hobby;
+
+    @OneToOne(mappedBy = "instructorDetailByInstructorDetailId", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) // refers to instructorDetail property on Instructor class
+    private InstructorEntity instructorEntity;
+
+    public InstructorEntity getInstructorEntity() {
+        return instructorEntity;
+    }
+
+    public void setInstructorEntity(InstructorEntity instructorEntity) {
+        this.instructorEntity = instructorEntity;
+    }
 
     public InstructorDetailEntity() {
     }
@@ -72,3 +85,5 @@ public class InstructorDetailEntity {
                 '}';
     }
 }
+
+

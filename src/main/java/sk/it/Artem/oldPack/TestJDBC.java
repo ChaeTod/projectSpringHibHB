@@ -1,4 +1,5 @@
-package sk.it.Artem;
+/*
+package sk.it.Artem.oldPack;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,3 +20,4 @@ public class TestJDBC {
         }
     }
 }
+*/

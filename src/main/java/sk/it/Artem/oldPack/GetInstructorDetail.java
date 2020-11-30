@@ -1,13 +1,14 @@
-package sk.it.Artem;
+/*
+package sk.it.Artem.oldPack;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import sk.it.Artem.entities.InstructorDetailEntity;
-import sk.it.Artem.entities.InstructorEntity;
+import sk.it.Artem.oldPack.entities.InstructorDetailEntity;
+import sk.it.Artem.oldPack.entities.InstructorEntity;
 
 
-public class GetConstructorDetail {
+public class GetInstructorDetail {
     public static void main(String[] args) {
         // create session factory
         SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(InstructorEntity.class).addAnnotatedClass(InstructorDetailEntity.class).buildSessionFactory();
@@ -43,3 +44,4 @@ public class GetConstructorDetail {
         }
     }
 }
+*/
