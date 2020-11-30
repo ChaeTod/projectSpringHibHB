@@ -18,45 +18,43 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "instructor_detail", schema = "hb-03-one-to-many")
-public class InstructorDetailEntity<InstructorEntity> {
+public class InstructorDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "id")
+    private int id;
 
-    @Basic
-    @Column(name = "youtube_channel", nullable = true, length = 128)
+    @Column(name = "youtube_channel")
     private String youtubeChannel;
 
-    @Basic
-    @Column(name = "hobby", nullable = true, length = 45)
+    @Column(name = "hobby")
     private String hobby;
 
-    @OneToOne(mappedBy = "instructorDetailByInstructorDetailId", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) // refers to instructorDetail property on Instructor class
-    private InstructorEntity instructorEntity;
+    @OneToOne(mappedBy = "instructorDetail", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private Instructor instructor;
 
-    public InstructorEntity getInstructorEntity() {
-        return instructorEntity;
+    public Instructor getInstructor() {
+        return instructor;
     }
 
-    public void setInstructorEntity(InstructorEntity instructorEntity) {
-        this.instructorEntity = instructorEntity;
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
-    public InstructorDetailEntity() {
+    public InstructorDetail() {
     }
 
-    public InstructorDetailEntity(String youtubeChannel, String hobby) {
+    public InstructorDetail(String youtubeChannel, String hobby) {
         this.youtubeChannel = youtubeChannel;
         this.hobby = hobby;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -78,7 +76,7 @@ public class InstructorDetailEntity<InstructorEntity> {
 
     @Override
     public String toString() {
-        return "InstructorDetailEntity{" +
+        return "InstructorDetail{" +
                 "id=" + id +
                 ", youtubeChannel='" + youtubeChannel + '\'' +
                 ", hobby='" + hobby + '\'' +

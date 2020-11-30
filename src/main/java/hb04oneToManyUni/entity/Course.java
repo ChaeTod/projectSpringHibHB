@@ -1,11 +1,13 @@
-package sk.it.Artem.course.enteties;
+package hb04oneToManyUni.entity;
 
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "course", schema = "hb-03-one-to-many")
+@Table(name = "course")
 public class Course {
 
     // define fields
@@ -29,6 +31,10 @@ public class Course {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id") // tell to the hibernate how to associate review with the given course
+    private List<Review> reviewList;
 
     public Course() {
     }
@@ -59,6 +65,21 @@ public class Course {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
+    }
+
+    // add a convenience method
+    public void addReview(Review review){
+        if (reviewList == null)
+            reviewList = new ArrayList<>();
+        reviewList.add(review);
     }
 
     @Override

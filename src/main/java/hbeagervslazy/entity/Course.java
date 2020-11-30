@@ -1,6 +1,4 @@
-package sk.it.Artem.course.enteties;
-
-
+package hbeagervslazy.entity;
 
 import javax.persistence.*;
 

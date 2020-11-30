@@ -1,12 +1,12 @@
-package sk.it.Artem.course;
+/*
+package hbeagervslazy.hbeagervslazy;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import sk.it.Artem.course.enteties.Course;
-import sk.it.Artem.course.enteties.InstructorDetail;
-import sk.it.Artem.course.enteties.Instructor;
-
+import hbeagervslazy.hbeagervslazy.entity.Course;
+import hbeagervslazy.hbeagervslazy.entity.InstructorDetail;
+import hbeagervslazy.hbeagervslazy.entity.Instructor;
 
 public class CreateInstructor {
     public static void main(String[] args) {
@@ -19,9 +19,9 @@ public class CreateInstructor {
         try {
 
             // create the objects
-            Instructor instructor = new Instructor("Susan", "Public", "susan@mail.com");
+            Instructor instructor = new Instructor("")
 
-            InstructorDetail instructorDetail = new InstructorDetail("www.youtube.com", "Video games!");
+            InstructorDetail instructorDetail = new InstructorDetail()
 
             // associate the objects
             instructor.setInstructorDetail(instructorDetail);
@@ -47,3 +47,4 @@ public class CreateInstructor {
         }
     }
 }
+*/

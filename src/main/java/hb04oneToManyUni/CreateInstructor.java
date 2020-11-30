@@ -1,11 +1,12 @@
-package sk.it.Artem.course;
+package hb04oneToManyUni;
 
+import hb04oneToManyUni.entity.Course;
+import hb04oneToManyUni.entity.Instructor;
+import hb04oneToManyUni.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import sk.it.Artem.course.enteties.Course;
-import sk.it.Artem.course.enteties.InstructorDetail;
-import sk.it.Artem.course.enteties.Instructor;
+
 
 
 public class CreateInstructor {
